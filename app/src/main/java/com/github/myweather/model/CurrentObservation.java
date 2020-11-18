@@ -3,6 +3,8 @@ package com.github.myweather.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 public class CurrentObservation {
 
     @SerializedName("wind")
@@ -40,5 +42,12 @@ public class CurrentObservation {
 
     public void setAstronomy(Astronomy astronomy) {
         this.astronomy = astronomy;
+    }
+
+    @NotNull
+    @Override
+    public String toString()
+    {
+        return this.wind + " " + this.atmosphere + " " + this.astronomy;
     }
 }

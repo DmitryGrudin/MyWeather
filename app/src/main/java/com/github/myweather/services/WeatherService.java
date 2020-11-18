@@ -9,6 +9,6 @@ import com.github.myweather.model.Channel;
 
 public interface WeatherService {
     @Headers("Content-Type: application/json")
-    @GET("forecastrss")
+    @GET("forecastrss?format=json")
     Call<Channel> getWeather(@Query("location") String location);
 }

@@ -3,6 +3,8 @@ package com.github.myweather.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Forecast {
 
 @SerializedName("code")
@@ -72,4 +74,10 @@ public void setText(String text) {
 this.text = text;
 }
 
+    @NotNull
+    @Override
+    public String toString()
+    {
+        return this.code + " " + this.date + " " + this.day;
+    }
 }

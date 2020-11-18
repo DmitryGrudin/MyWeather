@@ -3,6 +3,8 @@ package com.github.myweather.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class Channel {
@@ -41,4 +43,10 @@ public class Channel {
         this.forecast = forecast;
     }
 
+    @NotNull
+    @Override
+    public String toString()
+    {
+        return this.location + "\n" + this.currentObservation + "\n" + forecast;
+    }
 }

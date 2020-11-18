@@ -3,6 +3,8 @@ package com.github.myweather.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Location {
 
 @SerializedName("city")
@@ -38,5 +40,12 @@ return region;
 public void setRegion(String region) {
 this.region = region;
 }
+
+    @NotNull
+    @Override
+    public String toString()
+    {
+        return this.city + " " + this.country + " " + region;
+    }
 
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Weather</string>
+    <string name="def_location">sunnyvale,ca</string>
+    <string name="but_get_weather">Get weather</string>
 </resources>

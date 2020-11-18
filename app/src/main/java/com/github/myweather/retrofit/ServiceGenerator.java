@@ -1,6 +1,11 @@
 package com.github.myweather.retrofit;
 
-import com.google.api.client.auth.oauth.OAuthParameters;
+import com.github.myweather.utils.Constants;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.jetbrains.annotations.NotNull;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -9,21 +14,30 @@ public class ServiceGenerator {
 
     private static final OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-    // No need to instantiate this class.
     private ServiceGenerator() {
     }
 
-    public static <S> S createService(Class<S> serviceClass, String baseUrl, final OAuthParameters oauthParams) {
-        OAuthInterceptor interceptor =  new OAuthInterceptor(oauthParams);
-
-        if (!httpClient.interceptors().contains(interceptor)) {
-            httpClient.addInterceptor(interceptor);
+    @NotNull
+    public static <S> S createService(Class<S> serviceClass) {
+        OAuthInterceptor oauthInterceptor = new OAuthInterceptor(Constants.CLIENT_SECRET, Constants.CLIENT_ID);
+        if (!httpClient.interceptors().contains(oauthInterceptor)) {
+            httpClient.addInterceptor(oauthInterceptor);
         }
 
+        YahooInterceptor yahooInterceptor = new YahooInterceptor(Constants.APP_ID);
+        if (!httpClient.interceptors().contains(yahooInterceptor)) {
+            httpClient.addInterceptor(yahooInterceptor);
+        }
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
         Retrofit.Builder builder = new Retrofit.Builder()
-                                        .baseUrl(baseUrl)
-                                        .addConverterFactory(GsonConverterFactory.create());
-        builder.client(httpClient.build());
+                                        .baseUrl(Constants.API_BASE_URL)
+                                        .addConverterFactory(GsonConverterFactory.create(gson))
+                                        .client(httpClient.build());
+
         Retrofit retrofit = builder.build();
         return retrofit.create(serviceClass);
     }

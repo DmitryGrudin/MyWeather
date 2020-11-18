@@ -1,5 +1,7 @@
 package com.github.myweather.retrofit;
 
+import com.github.myweather.utils.Constants;
+import com.google.api.client.auth.oauth.OAuthHmacSigner;
 import com.google.api.client.auth.oauth.OAuthParameters;
 import com.google.api.client.http.GenericUrl;
 
@@ -14,10 +16,12 @@ import java.security.GeneralSecurityException;
 
 public class OAuthInterceptor implements Interceptor {
 
-    private final OAuthParameters oAuthParams;
+    private final String clientSharedSecret;
+    private final String consumerKey;
 
-    public OAuthInterceptor(OAuthParameters oAuthParams) {
-        this.oAuthParams = oAuthParams;
+    public OAuthInterceptor(String clientSharedSecret, String consumerKey) {
+        this.clientSharedSecret = clientSharedSecret;
+        this.consumerKey = consumerKey;
     }
 
     @NotNull
@@ -25,12 +29,20 @@ public class OAuthInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request originalRequest = chain.request();
         GenericUrl requestUrl = new GenericUrl(originalRequest.url().toString());
-        oAuthParams.computeNonce();
-        oAuthParams.computeTimestamp();
+
+        OAuthHmacSigner signer = new OAuthHmacSigner();
+        signer.clientSharedSecret = clientSharedSecret;
+        OAuthParameters oauthParams = new OAuthParameters();
+        oauthParams.consumerKey = consumerKey;
+        oauthParams.signer = signer;
+        oauthParams.version = "1.0";
+        oauthParams.computeNonce();
+        oauthParams.computeTimestamp();
+
         try {
-            oAuthParams.computeSignature("GET", requestUrl);
+            oauthParams.computeSignature("GET", requestUrl);
             Request compressedRequest = originalRequest.newBuilder()
-                    .header("Authorization", oAuthParams.getAuthorizationHeader())
+                    .header("Authorization", oauthParams.getAuthorizationHeader())
                     .method(originalRequest.method(), originalRequest.body())
                     .build();
             return chain.proceed(compressedRequest);
