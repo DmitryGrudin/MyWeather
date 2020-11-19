@@ -1,6 +1,5 @@
 package com.github.myweather.retrofit;
 
-import com.github.myweather.utils.Constants;
 import com.google.api.client.auth.oauth.OAuthHmacSigner;
 import com.google.api.client.auth.oauth.OAuthParameters;
 import com.google.api.client.http.GenericUrl;

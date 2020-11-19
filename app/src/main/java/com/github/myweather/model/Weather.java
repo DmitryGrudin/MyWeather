@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class Channel {
+public class Weather {
 
     @SerializedName("location")
     @Expose
@@ -45,8 +45,9 @@ public class Channel {
 
     @NotNull
     @Override
-    public String toString()
-    {
-        return this.location + "\n" + this.currentObservation + "\n" + forecast;
+    public String toString() {
+        return "--- Location ---\n" + location + "\n" +
+               "--- Current observation ---\n" + currentObservation + "\n" +
+               "--- Forecasts ---\n" + forecast;
     }
 }

@@ -5,10 +5,10 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
-import com.github.myweather.model.Channel;
+import com.github.myweather.model.Weather;
 
 public interface WeatherService {
     @Headers("Content-Type: application/json")
     @GET("forecastrss?format=json")
-    Call<Channel> getWeather(@Query("location") String location);
+    Call<Weather> getWeather(@Query("location") String location);
 }

@@ -6,14 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.myweather.R;
-import com.github.myweather.model.Channel;
+import com.github.myweather.model.Weather;
 import com.github.myweather.retrofit.ServiceGenerator;
 import com.github.myweather.services.WeatherService;
-import com.github.myweather.utils.Constants;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,20 +34,29 @@ public class MainActivity extends AppCompatActivity {
         editTxtLocation = findViewById(R.id.editTxtLocation);
         butGetWeather = findViewById(R.id.butGetWeather);
         butGetWeather.setOnClickListener(v -> ServiceGenerator.createService(
-                WeatherService.class).getWeather(editTxtLocation.getText().toString()).enqueue(new Callback<Channel>() {
+                WeatherService.class).getWeather(editTxtLocation.getText().toString()).enqueue(new Callback<Weather>() {
             @Override
-            public void onResponse(@NotNull Call<Channel> call, @NotNull Response<Channel> response) {
-                Log.i("Weather", response.body().toString());
-                txtResult.setText(response.body().toString());
+            public void onResponse(@NotNull Call<Weather> call, @NotNull Response<Weather> response) {
+                if (response.isSuccessful()) {
+                    Log.i("Weather", response.body().toString());
+                    txtResult.setText(response.body().toString());
+                } else {
+                    switch (response.code()) {
+                        case 404:
+
+                            break;
+                        case 500:
+
+                            break;
+                    }
+                }
             }
 
             @Override
-            public void onFailure(@NotNull Call<Channel> call, @NotNull Throwable t) {
+            public void onFailure(@NotNull Call<Weather> call, @NotNull Throwable t) {
                 txtResult.setText(t.getMessage());
                 Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
             }
         }));
     }
-
-
 }
