@@ -3,51 +3,63 @@ package com.github.myweather.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Atmosphere {
 
-@SerializedName("humidity")
-@Expose
-private String humidity;
-@SerializedName("pressure")
-@Expose
-private String pressure;
-@SerializedName("rising")
-@Expose
-private String rising;
-@SerializedName("visibility")
-@Expose
-private String visibility;
+    @SerializedName("humidity")
+    @Expose
+    private Integer humidity;
+    @SerializedName("pressure")
+    @Expose
+    private Float pressure;
+    @SerializedName("rising")
+    @Expose
+    private Integer rising;
+    @SerializedName("visibility")
+    @Expose
+    private Integer visibility;
 
-public String getHumidity() {
-return humidity;
-}
+    public Integer getHumidity() {
+        return humidity;
+    }
 
-public void setHumidity(String humidity) {
-this.humidity = humidity;
-}
+    public void setHumidity(Integer humidity) {
+        this.humidity = humidity;
+    }
 
-public String getPressure() {
-return pressure;
-}
+    public Float getPressure() {
+        return pressure;
+    }
 
-public void setPressure(String pressure) {
-this.pressure = pressure;
-}
+    public void setPressure(Float pressure) {
+        this.pressure = pressure;
+    }
 
-public String getRising() {
-return rising;
-}
+    public Integer getRising() {
+        return rising;
+    }
 
-public void setRising(String rising) {
-this.rising = rising;
-}
+    public void setRising(Integer rising) {
+        this.rising = rising;
+    }
 
-public String getVisibility() {
-return visibility;
-}
+    public Integer getVisibility() {
+        return visibility;
+    }
 
-public void setVisibility(String visibility) {
-this.visibility = visibility;
-}
+    public void setVisibility(Integer visibility) {
+        this.visibility = visibility;
+    }
 
+    @NotNull
+    @Override
+    public String toString() {
+        return "Atmosphere{" +
+                "humidity=" + humidity +
+                ", pressure=" + pressure +
+                ", rising=" + rising +
+                ", visibility=" + visibility +
+                '}';
+    }
 }

@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import org.jetbrains.annotations.NotNull;
 
 public class CurrentObservation {
-
     @SerializedName("wind")
     @Expose
     private Wind wind;
@@ -19,6 +18,9 @@ public class CurrentObservation {
     @SerializedName("condition")
     @Expose
     private Condition condition;
+    @SerializedName("pubDate")
+    @Expose
+    private Long pubDate;
 
     public Wind getWind() {
         return wind;
@@ -44,10 +46,31 @@ public class CurrentObservation {
         this.astronomy = astronomy;
     }
 
+    public Condition getCondition() {
+        return condition;
+    }
+
+    public void setCondition(Condition condition) {
+        this.condition = condition;
+    }
+
+    public Long getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(Long pubDate) {
+        this.pubDate = pubDate;
+    }
+
     @NotNull
     @Override
-    public String toString()
-    {
-        return this.wind + " " + this.atmosphere + " " + this.astronomy;
+    public String toString() {
+        return "CurrentObservation{" +
+                "wind=" + wind +
+                ", atmosphere=" + atmosphere +
+                ", astronomy=" + astronomy +
+                ", condition=" + condition +
+                ", pubDate=" + pubDate +
+                '}';
     }
 }

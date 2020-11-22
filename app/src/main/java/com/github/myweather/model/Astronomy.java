@@ -3,29 +3,38 @@ package com.github.myweather.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Astronomy {
+    @SerializedName("sunrise")
+    @Expose
+    private String sunrise;
+    @SerializedName("sunset")
+    @Expose
+    private String sunset;
 
-@SerializedName("sunrise")
-@Expose
-private String sunrise;
-@SerializedName("sunset")
-@Expose
-private String sunset;
+    public String getSunrise() {
+        return sunrise;
+    }
 
-public String getSunrise() {
-return sunrise;
-}
+    public void setSunrise(String sunrise) {
+        this.sunrise = sunrise;
+    }
 
-public void setSunrise(String sunrise) {
-this.sunrise = sunrise;
-}
+    public String getSunset() {
+        return sunset;
+    }
 
-public String getSunset() {
-return sunset;
-}
+    public void setSunset(String sunset) {
+        this.sunset = sunset;
+    }
 
-public void setSunset(String sunset) {
-this.sunset = sunset;
-}
-
+    @NotNull
+    @Override
+    public String toString() {
+        return "Astronomy{" +
+                "sunrise='" + sunrise + '\'' +
+                ", sunset='" + sunset + '\'' +
+                '}';
+    }
 }

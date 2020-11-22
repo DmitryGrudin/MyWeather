@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import org.jetbrains.annotations.NotNull;
 
 public class Location {
-
     @SerializedName("woeid")
     @Expose
     private Integer woeid;
@@ -88,13 +87,14 @@ public class Location {
     @NotNull
     @Override
     public String toString() {
-        return "woeid: "          + woeid +
-                ", city: "        + city +
-                ", region: "      + region +
-                ", country: "     + country +
-                ", lat: "         + lat +
-                ", long: "        + lon +
-                ", timezone_id: " + timezoneId;
+        return "Location{" +
+                "woeid=" + woeid +
+                ", city='" + city + '\'' +
+                ", region='" + region + '\'' +
+                ", country='" + country + '\'' +
+                ", lat=" + lat +
+                ", lon=" + lon +
+                ", timezoneId='" + timezoneId + '\'' +
+                '}';
     }
-
 }

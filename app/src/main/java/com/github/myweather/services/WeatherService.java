@@ -11,4 +11,12 @@ public interface WeatherService {
     @Headers("Content-Type: application/json")
     @GET("forecastrss?format=json")
     Call<Weather> getWeather(@Query("location") String location);
+
+    @Headers("Content-Type: application/json")
+    @GET("forecastrss?format=json")
+    Call<Weather> getWeather(@Query("lat") Double lat, @Query("lat") Double lon);
+
+    @Headers("Content-Type: application/json")
+    @GET("forecastrss?format=json")
+    Call<Weather> getWeather(@Query("woeid") Integer woeid);
 }

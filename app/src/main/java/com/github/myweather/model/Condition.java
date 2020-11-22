@@ -3,51 +3,63 @@ package com.github.myweather.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Condition {
 
-@SerializedName("code")
-@Expose
-private String code;
-@SerializedName("date")
-@Expose
-private String date;
-@SerializedName("temp")
-@Expose
-private String temp;
-@SerializedName("text")
-@Expose
-private String text;
+    @SerializedName("code")
+    @Expose
+    private Integer code;
+    @SerializedName("date")
+    @Expose
+    private Long date;
+    @SerializedName("temp")
+    @Expose
+    private Integer temp;
+    @SerializedName("text")
+    @Expose
+    private String text;
 
-public String getCode() {
-return code;
-}
+    public Integer getCode() {
+        return code;
+    }
 
-public void setCode(String code) {
-this.code = code;
-}
+    public void setCode(Integer code) {
+        this.code = code;
+    }
 
-public String getDate() {
-return date;
-}
+    public Long getDate() {
+        return date;
+    }
 
-public void setDate(String date) {
-this.date = date;
-}
+    public void setDate(Long date) {
+        this.date = date;
+    }
 
-public String getTemp() {
-return temp;
-}
+    public Integer getTemp() {
+        return temp;
+    }
 
-public void setTemp(String temp) {
-this.temp = temp;
-}
+    public void setTemp(Integer temp) {
+        this.temp = temp;
+    }
 
-public String getText() {
-return text;
-}
+    public String getText() {
+        return text;
+    }
 
-public void setText(String text) {
-this.text = text;
-}
+    public void setText(String text) {
+        this.text = text;
+    }
 
+    @NotNull
+    @Override
+    public String toString() {
+        return "Condition{" +
+                "code=" + code +
+                ", date=" + date +
+                ", temp=" + temp +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

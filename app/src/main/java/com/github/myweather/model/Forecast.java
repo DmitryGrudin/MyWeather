@@ -7,77 +7,83 @@ import org.jetbrains.annotations.NotNull;
 
 public class Forecast {
 
-@SerializedName("code")
-@Expose
-private String code;
-@SerializedName("date")
-@Expose
-private String date;
-@SerializedName("day")
-@Expose
-private String day;
-@SerializedName("high")
-@Expose
-private String high;
-@SerializedName("low")
-@Expose
-private String low;
-@SerializedName("text")
-@Expose
-private String text;
+    @SerializedName("code")
+    @Expose
+    private Integer code;
+    @SerializedName("date")
+    @Expose
+    private Long date;
+    @SerializedName("day")
+    @Expose
+    private String day;
+    @SerializedName("high")
+    @Expose
+    private Integer high;
+    @SerializedName("low")
+    @Expose
+    private Integer low;
+    @SerializedName("text")
+    @Expose
+    private String text;
 
-public String getCode() {
-return code;
-}
+    public Integer getCode() {
+        return code;
+    }
 
-public void setCode(String code) {
-this.code = code;
-}
+    public void setCode(Integer code) {
+        this.code = code;
+    }
 
-public String getDate() {
-return date;
-}
+    public Long getDate() {
+        return date;
+    }
 
-public void setDate(String date) {
-this.date = date;
-}
+    public void setDate(Long date) {
+        this.date = date;
+    }
 
-public String getDay() {
-return day;
-}
+    public String getDay() {
+        return day;
+    }
 
-public void setDay(String day) {
-this.day = day;
-}
+    public void setDay(String day) {
+        this.day = day;
+    }
 
-public String getHigh() {
-return high;
-}
+    public Integer getHigh() {
+        return high;
+    }
 
-public void setHigh(String high) {
-this.high = high;
-}
+    public void setHigh(Integer high) {
+        this.high = high;
+    }
 
-public String getLow() {
-return low;
-}
+    public Integer getLow() {
+        return low;
+    }
 
-public void setLow(String low) {
-this.low = low;
-}
+    public void setLow(Integer low) {
+        this.low = low;
+    }
 
-public String getText() {
-return text;
-}
+    public String getText() {
+        return text;
+    }
 
-public void setText(String text) {
-this.text = text;
-}
+    public void setText(String text) {
+        this.text = text;
+    }
 
     @NotNull
     @Override
-    public String toString()
-    {
-        return this.code + " " + this.date + " " + this.day;
+    public String toString() {
+        return "Forecast{" +
+                "code=" + code +
+                ", date=" + date +
+                ", day='" + day + '\'' +
+                ", high=" + high +
+                ", low=" + low +
+                ", text='" + text + '\'' +
+                '}';
     }
 }
