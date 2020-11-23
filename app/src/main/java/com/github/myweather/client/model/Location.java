@@ -1,14 +1,11 @@
 package com.github.myweather.client.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Location implements Parcelable {
+public class Location {
     @SerializedName("woeid")
     @Expose
     private Integer woeid;
@@ -30,40 +27,6 @@ public class Location implements Parcelable {
     @SerializedName("timezone_id")
     @Expose
     private String timezoneId;
-
-    protected Location(Parcel in) {
-        if (in.readByte() == 0) {
-            woeid = null;
-        } else {
-            woeid = in.readInt();
-        }
-        city = in.readString();
-        region = in.readString();
-        country = in.readString();
-        if (in.readByte() == 0) {
-            lat = null;
-        } else {
-            lat = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            lon = null;
-        } else {
-            lon = in.readDouble();
-        }
-        timezoneId = in.readString();
-    }
-
-    public static final Creator<Location> CREATOR = new Creator<Location>() {
-        @Override
-        public Location createFromParcel(Parcel in) {
-            return new Location(in);
-        }
-
-        @Override
-        public Location[] newArray(int size) {
-            return new Location[size];
-        }
-    };
 
     public Integer getWoeid() {
         return woeid;
@@ -133,36 +96,5 @@ public class Location implements Parcelable {
                 ", lon=" + lon +
                 ", timezoneId='" + timezoneId + '\'' +
                 '}';
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        if (woeid == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeInt(woeid);
-        }
-        parcel.writeString(city);
-        parcel.writeString(region);
-        parcel.writeString(country);
-        if (lat == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeDouble(lat);
-        }
-        if (lon == null) {
-            parcel.writeByte((byte) 0);
-        } else {
-            parcel.writeByte((byte) 1);
-            parcel.writeDouble(lon);
-        }
-        parcel.writeString(timezoneId);
     }
 }

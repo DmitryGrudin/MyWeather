@@ -3,4 +3,6 @@
     <string name="def_location">sunnyvale,ca</string>
     <string name="but_get_weather">Get weather</string>
     <string name="hint_location">Location</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
