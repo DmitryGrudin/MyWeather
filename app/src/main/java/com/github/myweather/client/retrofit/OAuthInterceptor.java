@@ -1,4 +1,4 @@
-package com.github.myweather.retrofit;
+package com.github.myweather.client.retrofit;
 
 import com.google.api.client.auth.oauth.OAuthHmacSigner;
 import com.google.api.client.auth.oauth.OAuthParameters;
@@ -13,7 +13,7 @@ import okhttp3.Response;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
-public class OAuthInterceptor implements Interceptor {
+class OAuthInterceptor implements Interceptor {
 
     private final String clientSharedSecret;
     private final String consumerKey;

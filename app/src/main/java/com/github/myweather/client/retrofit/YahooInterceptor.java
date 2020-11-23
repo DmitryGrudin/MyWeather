@@ -1,4 +1,4 @@
-package com.github.myweather.retrofit;
+package com.github.myweather.client.retrofit;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -8,7 +8,7 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class YahooInterceptor  implements Interceptor {
+class YahooInterceptor  implements Interceptor {
     private final String appId;
 
     public YahooInterceptor(String appId) {

@@ -2,6 +2,7 @@ package com.github.myweather.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -9,19 +10,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.github.myweather.R;
-import com.github.myweather.model.Weather;
-import com.github.myweather.retrofit.ServiceGenerator;
-import com.github.myweather.services.WeatherService;
-
-import org.jetbrains.annotations.NotNull;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.github.myweather.client.YahooWeatherClient;
+import com.github.myweather.client.model.Weather;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText txtResult;
+    YahooWeatherClient client = new YahooWeatherClient();
+
     EditText editTxtLocation;
     Button butGetWeather;
 
@@ -30,33 +25,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtResult = findViewById(R.id.txtResult);
         editTxtLocation = findViewById(R.id.editTxtLocation);
         butGetWeather = findViewById(R.id.butGetWeather);
-        butGetWeather.setOnClickListener(v -> ServiceGenerator.createService(
-                WeatherService.class).getWeather(editTxtLocation.getText().toString()).enqueue(new Callback<Weather>() {
-            @Override
-            public void onResponse(@NotNull Call<Weather> call, @NotNull Response<Weather> response) {
-                if (response.isSuccessful()) {
-                    Log.i("Weather", response.body().toString());
-                    txtResult.setText(response.body().toString());
-                } else {
-                    switch (response.code()) {
-                        case 404:
-
-                            break;
-                        case 500:
-
-                            break;
+        butGetWeather.setOnClickListener(v -> client.getWeather(editTxtLocation.getText().toString(),
+                new YahooWeatherClient.WeatherCallback() {
+                    @Override
+                    public void onResponse(Weather response) {
+                        Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+                        intent.putExtra("weather", response);
+                        startActivity(intent);
                     }
-                }
-            }
 
-            @Override
-            public void onFailure(@NotNull Call<Weather> call, @NotNull Throwable t) {
-                txtResult.setText(t.getMessage());
-                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
-            }
-        }));
+                    @Override
+                    public void onFailure(String error) {
+                        Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
+                    }
+                }));
     }
 }

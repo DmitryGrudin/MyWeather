@@ -1,4 +1,7 @@
-package com.github.myweather.model;
+package com.github.myweather.client.model;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class Weather {
+public class Weather implements Parcelable {
 
     @SerializedName("location")
     @Expose
@@ -18,6 +21,24 @@ public class Weather {
     @SerializedName("forecasts")
     @Expose
     private List<Forecast> forecast = null;
+
+    protected Weather(Parcel in) {
+        location = in.readParcelable(Location.class.getClassLoader());
+        currentObservation = in.readParcelable(CurrentObservation.class.getClassLoader());
+        forecast = in.createTypedArrayList(Forecast.CREATOR);
+    }
+
+    public static final Creator<Weather> CREATOR = new Creator<Weather>() {
+        @Override
+        public Weather createFromParcel(Parcel in) {
+            return new Weather(in);
+        }
+
+        @Override
+        public Weather[] newArray(int size) {
+            return new Weather[size];
+        }
+    };
 
     public Location getLocation() {
         return location;
@@ -49,5 +70,17 @@ public class Weather {
         return "--- Location ---\n" + location + "\n" +
                "--- Current observation ---\n" + currentObservation + "\n" +
                "--- Forecasts ---\n" + forecast;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeParcelable(location, i);
+        parcel.writeParcelable(currentObservation, i);
+        parcel.writeTypedList(forecast);
     }
 }

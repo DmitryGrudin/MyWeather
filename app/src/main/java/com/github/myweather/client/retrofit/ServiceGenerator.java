@@ -1,4 +1,4 @@
-package com.github.myweather.retrofit;
+package com.github.myweather.client.retrofit;
 
 import com.github.myweather.utils.Constants;
 import com.google.gson.Gson;

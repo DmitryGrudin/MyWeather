@@ -1,11 +1,11 @@
-package com.github.myweather.services;
+package com.github.myweather.client.services;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
-import com.github.myweather.model.Weather;
+import com.github.myweather.client.model.Weather;
 
 public interface WeatherService {
     @Headers("Content-Type: application/json")
