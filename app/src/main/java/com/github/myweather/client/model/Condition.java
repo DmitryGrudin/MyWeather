@@ -13,9 +13,9 @@ public class Condition {
     @SerializedName("date")
     @Expose
     private Long date;
-    @SerializedName("temp")
+    @SerializedName("temperature")
     @Expose
-    private Integer temp;
+    private Integer temperature;
     @SerializedName("text")
     @Expose
     private String text;
@@ -36,12 +36,12 @@ public class Condition {
         this.date = date;
     }
 
-    public Integer getTemp() {
-        return temp;
+    public Integer getTemperature() {
+        return temperature;
     }
 
-    public void setTemp(Integer temp) {
-        this.temp = temp;
+    public void setTemperature(Integer temperature) {
+        this.temperature = temperature;
     }
 
     public String getText() {
@@ -58,7 +58,7 @@ public class Condition {
         return "Condition{" +
                 "code=" + code +
                 ", date=" + date +
-                ", temp=" + temp +
+                ", temperature=" + temperature +
                 ", text='" + text + '\'' +
                 '}';
     }
