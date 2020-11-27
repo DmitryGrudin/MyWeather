@@ -7,11 +7,18 @@
     <string name="text_temperature">%1$d&#xb0;</string>
     <string name="text_windchill">Windchill %1$d&#xb0;</string>
     <string name="text_wind">WIND</string>
-    <string name="text_wind_direction">Direction %1$d&#xb0;</string>
-    <string name="text_wind_speed">Speed %1$.2f m/h;</string>
+    <string name="text_wind_direction">Direction: %1$d&#xb0;</string>
+    <string name="text_wind_speed">Speed: %1$.2f m/h</string>
     <string name="text_atmosphere">ATMOSPHERE</string>
-    <string name="text_humidity">Humidity %1$d%</string>
-    <string name="text_visibility">Visibility %1$d mile</string>
-    <string name="text_pressure">Pressure %1$f Inch Hg</string>
+    <string name="text_humidity">Humidity: %1$d%%</string>
+    <string name="text_visibility">Visibility: %1$.2f mile</string>
+    <string name="text_pressure">Pressure: %1$.2f Inch Hg</string>
     <string name="text_astronomy">ASTRONOMY</string>
+    <string name="text_sunrise">Sunrise: %1$s</string>
+    <string name="text_sunset">Sunset: %1$s</string>
+    <string name="text_date_update">Updated %1$s</string>
+    <string name="url_yahoo_logo">https://poweredby.yahoo.com/purple.png</string>
+    <string name="url_condition_img">http://l.yimg.com/a/i/us/we/52/%1$d.gif</string>
+    <string name="title_details">Details</string>
+    <string name="title_forecasts">Forecasts</string>
 </resources>

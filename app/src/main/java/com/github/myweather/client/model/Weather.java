@@ -1,7 +1,5 @@
 package com.github.myweather.client.model;
 
-import android.os.Parcel;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -19,7 +17,7 @@ public class Weather {
     private CurrentObservation currentObservation;
     @SerializedName("forecasts")
     @Expose
-    private List<Forecast> forecast = null;
+    private List<Forecast> forecasts = null;
 
     public Location getLocation() {
         return location;
@@ -37,12 +35,12 @@ public class Weather {
         this.currentObservation = currentObservation;
     }
 
-    public List<Forecast> getForecast() {
-        return forecast;
+    public List<Forecast> getForecasts() {
+        return forecasts;
     }
 
-    public void setForecast(List<Forecast> forecast) {
-        this.forecast = forecast;
+    public void setForecasts(List<Forecast> forecasts) {
+        this.forecasts = forecasts;
     }
 
     @NotNull
@@ -50,6 +48,6 @@ public class Weather {
     public String toString() {
         return "--- Location ---\n" + location + "\n" +
                "--- Current observation ---\n" + currentObservation + "\n" +
-               "--- Forecasts ---\n" + forecast;
+               "--- Forecasts ---\n" + forecasts;
     }
 }

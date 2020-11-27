@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="forecast"
+            type="com.github.myweather.client.model.Forecast"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:text="@{forecast.getDay()}"
+            tools:text="Tue" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:dateUnixTime="@{forecast.getDate()}"
+            tools:text="26/11/20" />
+
+        <ImageView
+            android:id="@+id/forecast_condition_img"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:srcUrl="@{@string/url_condition_img(forecast.getCode())}"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/low"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="@{@string/text_temperature(forecast.getLow())}"
+            tools:text="-40&#xb0;" />
+
+        <TextView
+            android:id="@+id/high"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="@{@string/text_temperature(forecast.getHigh())}"
+            tools:text="40&#xb0;" />
+
+    </LinearLayout>
+
+</layout>
