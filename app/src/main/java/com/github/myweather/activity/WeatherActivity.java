@@ -45,15 +45,13 @@ public class WeatherActivity extends AppCompatActivity {
     private CurrentObservationViewModel currentObservationViewModel;
     private ForecastsViewModel forecastsViewModel;
 
-    TextView locationCity;
-    TextView locationRegionCountry;
-    TextView temperature;
-    TextView condition;
-    TextView windchill;
-    TextView dateUpdate;
-    ImageView yahooLogo;
-    ImageView conditionImg;
-    BottomNavigationView navFragment;
+    private TextView locationCity;
+    private TextView locationRegionCountry;
+    private TextView temperature;
+    private TextView condition;
+    private TextView windchill;
+    private TextView dateUpdate;
+    private ImageView conditionImg;
 
     private String location;
     private Weather weather;
@@ -70,9 +68,8 @@ public class WeatherActivity extends AppCompatActivity {
         condition = findViewById(R.id.condition);
         windchill = findViewById(R.id.windchill);
         dateUpdate = findViewById(R.id.date_update);
-        yahooLogo = findViewById(R.id.yahoo_logo);
         conditionImg = findViewById(R.id.condition_img);
-        navFragment = findViewById(R.id.navigation);
+        BottomNavigationView navFragment = findViewById(R.id.navigation);
 
         currentObservationViewModel = new ViewModelProvider(this)
                 .get(CurrentObservationViewModel.class);
@@ -129,7 +126,7 @@ public class WeatherActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(String error) {
-                        Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WeatherActivity.this, error, Toast.LENGTH_SHORT).show();
                         Log.w("Weather", error);
                     }
                 });

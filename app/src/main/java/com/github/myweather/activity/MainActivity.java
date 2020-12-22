@@ -11,16 +11,13 @@ import com.github.myweather.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText editTxtLocation;
-    Button butGetWeather;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editTxtLocation = findViewById(R.id.editTxtLocation);
-        butGetWeather = findViewById(R.id.butGetWeather);
+        EditText editTxtLocation = findViewById(R.id.editTxtLocation);
+        Button butGetWeather = findViewById(R.id.butGetWeather);
         butGetWeather.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
             intent.putExtra("location", editTxtLocation.getText().toString());

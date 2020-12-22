@@ -17,13 +17,13 @@ import org.jetbrains.annotations.NotNull;
 
 public class CurrentObservationFragment extends Fragment {
 
-    TextView windDirection;
-    TextView windSpeed;
-    TextView atmosphereHumidity;
-    TextView atmospherePressure;
-    TextView atmosphereVisibility;
-    TextView astronomySunrise;
-    TextView astronomySunset;
+    private TextView windDirection;
+    private TextView windSpeed;
+    private TextView atmosphereHumidity;
+    private TextView atmospherePressure;
+    private TextView atmosphereVisibility;
+    private TextView astronomySunrise;
+    private TextView astronomySunset;
 
     public CurrentObservationFragment() {
 
